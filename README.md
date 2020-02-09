@@ -10,5 +10,8 @@ As they say, a gif is worth a thousand words
 
 ![example](./example.gif)
 
-Maybe not the best example but what ever:)
-please also note you need to be careful with escaping special characters such as `\n` like using `\\n` or raw strings `r"\n"` and there are technicalities with `"` but I hope you get the point!
+and because I like even numbers
+
+![example2](./example2.gif)
+
+Hope this helps!
