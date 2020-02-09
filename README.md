@@ -10,7 +10,7 @@ As they say, a gif is worth a thousand words
 
 ![example](./example.gif)
 
-and because I like even numbers
+I have also added some support for snippets with variants and you can optionally display those alternatives on the quick panel as you can see below
 
 ![example2](./example2.gif)
 
