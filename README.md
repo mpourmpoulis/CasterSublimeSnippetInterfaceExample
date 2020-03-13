@@ -152,7 +152,16 @@ Except from the more classical placeholders, sublime also  allows the usage of [
 ![example5](./example5.gif)
 
 But what we are mostly interested in are the ones we can supply to the command ourselves `$PARAM1,$PARAM2,...,$PARAMn`!
-we simply need to pass them to the `insert_snippet` command as arguments along with the snippet contents. At this point it should be noted that we can use their names as well!
+we simply need to pass them to the `insert_snippet` command as arguments along with the snippet contents. 
+
+```python
+snippet_parameters = {"PARAM{0}".format(i+1):s for i,s in enumerate(stored_values)}
+snippet_parameters["PARAMn"] = ",".join(stored_values)
+snippet_parameters["contents"] = snippet
+send_sublime("insert_snippet",snippet_parameters)
+```
+
+At this point it should be noted that we can use other names as well!
 
 
 #### Primitive And Fake Auto Complete Like Functionality
@@ -180,10 +189,16 @@ For instance,
 
 And by making `$PARAMn` have a special meaning like all the other values concatenated with the `,` in between 
 
-![example5](./example5.gif)
+```python
+"loop zip":"for(auto&& $1 : zip(${2:$PARAMn})){\n\t$0\n}\n",
+```
+
+We can achieve something like
+
+![example5](./example7.gif)
 
 
-What is being currently implemented is of course very primitive, but whatever:)
+What is being currently implemented is of course very primitive and the values are immediately consumed, but whatever:)
 
 #### Collecting Those Parameters
 
