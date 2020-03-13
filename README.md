@@ -14,7 +14,7 @@ But enough blah blah let's get going!
 
 ## First Example
 
-Let's start with the [original example](./sublime_snippet_example.py)
+Let's start with the [original example](./sublime_snippet_example.py) 
 
 ### Basic Usage
 
@@ -22,18 +22,53 @@ As they say, a gif is worth a thousand words
 
 ![example](./example.gif)
 
+(please note that the file has been modified ever since these gif was recorded but you still get the point)
 
 
+### Snippets With Variants Initial
 
 
-## Snippets With Variants
+I have also added some support for snippets with variants, so that you can use suffix integer
 
-I have also added some support for snippets with variants and you can optionally display those alternatives on the quick panel as you can see below
+```python
+"<snippet_variants> [<n>]"
+```
+
+To select which alternative from a list of variants of the same snippet you want! In case of error, you can use 
+
+```python
+"variant <n>"
+```
+
+To pick another variant and you can optionally display those alternatives on the quick panel by using
+
+```python
+"display variants"
+```
+
+To see that all in action
 
 ![example2](./example2.gif)
 
-Hope this helps!
 
-## Snippets With Variants 
 
+## Custom C++ Snippets
+
+Inside [custom_cpp.py](./custom_cpp.py) you can find a whole bunch of custom snippets that I have created for my personal usage. You probably might want to change them to suit your needs but they could serve as a baseline, I really had a great time with some of them like `error line [<n>]`!
+
+
+### Snippets With Variants Improved
+
+
+## Experimental Features
+
+Inside [custom_cpp_experimental.py](./custom_cpp_experimental.py) you will find more or less the same snippets but with a couple of more features
+
+### Applying Transformations To Snippets
+
+
+![example3](./example3.gif)
+
+
+## Snippets Generated From C++ STL
 
