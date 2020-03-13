@@ -2,6 +2,21 @@
 
 Repository for experimenting with sublime snippets and Caster voice commands 
 
+## Contents
+<!-- MarkdownTOC  autolink="true" -->
+
+- [Introduction And Motivation](#introduction-and-motivation)
+- [First Example](#first-example)
+	- [Basic Usage](#basic-usage)
+	- [Snippets With Variants Initial](#snippets-with-variants-initial)
+- [Custom C++ Snippets](#custom-c-snippets)
+	- [Snippets With Variants Improved](#snippets-with-variants-improved)
+- [Experimental Features](#experimental-features)
+	- [Applying Transformations To Snippets](#applying-transformations-to-snippets)
+- [Snippets Generated From C++ STL](#snippets-generated-from-c-stl)
+
+<!-- /MarkdownTOC -->
+
 ## Introduction And Motivation
 
 When programming by voice, utilizing code snippets can have an important impact on improving your speed and making your overall experience more enjoyable! Nonetheless, creating such snippets can be time-consuming, because you need to create all the individual .sublime-snippet files containing the actual content of those snippets as well as the voice grammar containing commands to trigger them!
