@@ -16,9 +16,9 @@ Repository for experimenting with sublime snippets and Caster voice commands
 		- [Potential Improvements](#potential-improvements)
 	- [Passing Parameters To Snippets](#passing-parameters-to-snippets)
 		- [General About Snippet Parameters](#general-about-snippet-parameters)
-		- [Fake Auto Complete](#fake-auto-complete)
+		- [Primitive And Fake Auto Complete Like Functionality](#primitive-and-fake-auto-complete-like-functionality)
 		- [Collecting Those Parameters](#collecting-those-parameters)
-		- [Improvements](#improvements)
+		- [Improvements - Intuitively Named Variables](#improvements---intuitively-named-variables)
 - [Snippets Generated From C++ STL](#snippets-generated-from-c-stl)
 
 <!-- /MarkdownTOC -->
@@ -143,15 +143,71 @@ To revert to the last transformation and apply another one instead in a single g
 
 ### Passing Parameters To Snippets
 
+Now this is something kinda interesting but it remains to be seen if it is really worth the trouble
+
 #### General About Snippet Parameters
 
-Except from the more classical placeholders,
+Except from the more classical placeholders, sublime also  allows the usage of [environmental variables](https://sublime-text-unofficial-documentation.readthedocs.io/en/latest/extensibility/snippets.html#snippet-features) in snippets. For instance, using `$SELECTION` we can perform something somewhat similar to Caster's Store And Retrieve functionality
 
-#### Fake Auto Complete
+![example5](./example5.gif)
+
+But what we are mostly interested in are the ones we can supply to the command ourselves `$PARAM1,$PARAM2,...,$PARAMn`!
+we simply need to pass them to the `insert_snippet` command as arguments along with the snippet contents. At this point it should be noted that we can use their names as well!
+
+
+#### Primitive And Fake Auto Complete Like Functionality
+
+The core idea is is that we can
+
+* Collect words, phrases and so on but we want to reuse later
+
+* Specifying snippets where we want each of them to appear using `$PARAM1` and so on
+
+* Specify whether these values should be used or not. Currently if you want to use them you just need the suffix `over`
+
+```python
+        "<snippet> over":
+            R(Function(insert_snippet_with_defaults)),
+        "<snippet_variants> [<n>] over":
+            R(Function(insert_snippet_with_variants_and_defaults)),
+
+```
+
+For instance, 
+
+![example5](./example6.gif)
+
+
+And by making `$PARAMn` have a special meaning like all the other values concatenated with the `,` in between 
+
+![example5](./example5.gif)
+
+
+What is being currently implemented is of course very primitive, but whatever:)
 
 #### Collecting Those Parameters
 
-#### Improvements
+initially I wanted to be able to insert a snippet  and when I'm done with a field to grab it all  and store it before moving on, but so far I have not been able to find a way to do this consistently. so what is currently available is simply selecting the current word and then store and what ever is selected using the clipboard
+
+```python
+        "jerry":
+            R(Function(store_and_next)),
+```
+
+After doing so, this command will advance to the next snippet field as well, but we can have commands the do not!
+
+Currently these values are simply pushed into a stack but we could use a suffix index to specify which slot we want to fill instead like
+
+```python
+        "jerry [<n>]":
+            R(Function(store_and_next)),
+```
+
+But there is another improvement we can make in the plot
+
+#### Improvements - Intuitively Named Variables
+
+Because as it seems we can use other names as well, we could define variables with more intuitive names such as `$ITERABLE` for staff we iterate over in  for loops and the commands that would look like `(jerry|what ever command name you like) iterable`.  Then the value stored by this command can only be used by a snippet that wants an `$ITERABLE` and vice versa! this might be interesting but I couldn't guarantee but it would make too much of a difference!
 
 
 ## Snippets Generated From C++ STL
