@@ -15,6 +15,7 @@ Repository for experimenting with sublime snippets and Caster voice commands
 	- [Applying Transformations To Snippets](#applying-transformations-to-snippets)
 		- [Potential Improvements](#potential-improvements)
 	- [Passing Parameters To Snippets](#passing-parameters-to-snippets)
+		- [General About Snippet Parameters](#general-about-snippet-parameters)
 		- [Fake Auto Complete](#fake-auto-complete)
 		- [Collecting Those Parameters](#collecting-those-parameters)
 		- [Improvements](#improvements)
@@ -141,6 +142,10 @@ One of the examples above shows two successive commands that apply transformatio
 To revert to the last transformation and apply another one instead in a single go
 
 ### Passing Parameters To Snippets
+
+#### General About Snippet Parameters
+
+Except from the more classical placeholders,
 
 #### Fake Auto Complete
 
