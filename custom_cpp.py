@@ -31,6 +31,7 @@ def insert_snippet_with_variants(snippet_variants,n = 1, **kwargs):
         insert_snippet(snippet_variants[n-1])
         variants = snippet_variants
     else:
+        variants = snippet_variants
         insert_snippet(snippet_variants(n))
 
 
@@ -247,7 +248,8 @@ class CppSnippetExample(MappingRule):
         "display variants":
             R(Key("c-z") + Function(display_variants)),
         "small test":
-            R(Function(send_sublime,c = "insert_snippet",data = {"contents":"${1:$PARAK}=2","PARAK":"x"})),
+            R(Function(send_sublime,c = "insert_snippe",data = {"contents":"${1:$PARAK}=2","PARAK":"y"})) + 
+            R(Text("hello")),
         "small jerry":
             R(Function(send_sublime,c = "prev_field",data = {})),
 
