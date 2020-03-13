@@ -17,7 +17,7 @@ import os
 import re
 import subprocess
 
-output_location = "."
+output_location = "C:\\Users\\Admin\\Desktop\\voice_cpp"
 with open(os.path.join(output_location,"documentation.json")) as fp:
     summaries = json.load(fp)
 
@@ -37,8 +37,16 @@ snippets = {k:extract_content(v) for k,v in s}
 
 
 def show_documentation(item):
-    # BringApp("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe","file:///" + data[item])    
-    website = "file:///" + file_mapping[item]
+
+    # to make it work with the offline version place in comments
+    item=file_mapping[item]
+    item = item[item.find("en\\cpp\\")  + len("en\\cpp\\"):]
+    website = "https://en.cppreference.com/w/cpp/" + item.replace("\\", "/").replace(".html","")
+
+    # to make it work with the offline version remove comment 
+    # and make sure path to the local HTML book is correct
+    # website = "file:///" + file_mapping[item]
+
     browser = utilities.default_browser_command()
     Popen(shlex.split(browser.replace('%1', website)))
 
