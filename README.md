@@ -49,7 +49,7 @@ I have also added some support for snippets with variants, so that you can use s
 "<snippet_variants> [<n>]"
 ```
 
-To select which alternative from a list of variants of the same snippet you want! In case of error, you can use 
+to select which alternative from an 1-indexed list of variants of the same snippet you want! In case of error, you can use 
 
 ```python
 "variant <n>"
@@ -73,6 +73,26 @@ Inside [custom_cpp.py](./custom_cpp.py) you can find a whole bunch of custom sni
 
 
 ### Snippets With Variants Improved
+
+This script would take those ideas a bit further and has 2 formats for snippets with variants
+
+* the old 1-indexed list of strings
+
+* a callable which will be fed with the choice `n`, if not provided the default value will be 1
+
+```python
+{
+    "attribute assign":
+        lambda n: "".join(["auto& $"+x+" = $1.$"+x+";\n" for x in string_range(2,n + 2)]),
+
+    "error line":lambda n:"std::cerr<< " + ' << " " << '.join(["$" + str(x) for x in range(1,n + 1)]) + " << std::endl;",
+    "error named":lambda n:"std::cerr<< " + ' << " " << '.join(['"${0}" << " " << ${0}'.format(x) for x in range(1,n + 1)]) + " << std::endl;",
+
+    "output attributes":lambda n:"${0:std::cout}<< " + ' << " " << '.join(["$1.$" + str(x) for x in range(2,n + 2)]) + " << std::endl;",
+}
+```
+
+![example4](./example4.gif)
 
 
 ## Experimental Features
