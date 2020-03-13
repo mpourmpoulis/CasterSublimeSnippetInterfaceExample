@@ -227,3 +227,24 @@ Because as it seems we can use other names as well, we could define variables wi
 
 ## Snippets Generated From C++ STL
 
+These are some snippets I have generated from  the C++ STL signatures I retrieved from [cppreference](https://en.cppreference.com/w/) in these are in fact what I was working on when I found all of this is possible. 
+
+You can retrieve them under [voice_cpp.py](./voice_cpp.py)
+
+Now there are a lot of limitations
+
+- Currently only algorithms are covered
+
+- all of this was made in a bit of a hurry, so no care has been taken to support variants or split standards!
+
+- this scripts I used need rewriting,there are a few trailing `,` here and there
+
+- To be done properly and cover this sheer size of C++ STL, these needs to be done within a self modifying rule so that you can selectively activate only what you need
+
+- But even then there are design decisions over what we want to include in the grammar!
+
+- They are adapted do what I needed 
+
+- As it is kinda old, most of the features she above are missing:)
+
+So as you can see there is a lot of things that are kinda broken but I would say for the most part they do the job at least the way I needed them to:) I will eventually make a separate repository for them and get them done properly, but for now integrating snippets with Caster is a higher priority! 
