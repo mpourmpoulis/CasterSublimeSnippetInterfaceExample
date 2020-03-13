@@ -11,8 +11,13 @@ Repository for experimenting with sublime snippets and Caster voice commands
 	- [Snippets With Variants Initial](#snippets-with-variants-initial)
 - [Custom C++ Snippets](#custom-c-snippets)
 	- [Snippets With Variants Improved](#snippets-with-variants-improved)
-- [Experimental Features](#experimental-features)
+- [More Experimental Features](#more-experimental-features)
 	- [Applying Transformations To Snippets](#applying-transformations-to-snippets)
+		- [Potential Improvements](#potential-improvements)
+	- [Passing Parameters To Snippets](#passing-parameters-to-snippets)
+		- [Fake Auto Complete](#fake-auto-complete)
+		- [Collecting Those Parameters](#collecting-those-parameters)
+		- [Improvements](#improvements)
 - [Snippets Generated From C++ STL](#snippets-generated-from-c-stl)
 
 <!-- /MarkdownTOC -->
@@ -94,15 +99,54 @@ This script would take those ideas a bit further and has 2 formats for snippets 
 
 ![example4](./example4.gif)
 
+As you can see, the `variant <n>` command also works with them! 
 
-## Experimental Features
 
-Inside [custom_cpp_experimental.py](./custom_cpp_experimental.py) you will find more or less the same snippets but with a couple of more features
+## More Experimental Features
+
+Inside [custom_cpp_experimental.py](./custom_cpp_experimental.py) you will find more or less the same snippets but with a couple of more features. How useful they actually are and what changes should be made is yet to be determined!
 
 ### Applying Transformations To Snippets
 
+A feature that might be of interest is the ability to apply some transformation upon the last snippet inserted. 
+
+```python
+"apply <transformation>":
+	R(Key("c-z") + Function(transform_last_snippet)),
+```
+
+this script currently supports
+
+- callable with a single argument
+
+- tuple if you want to use a regular expression
+
+In the latter case, the tuples should contain anything that you would pass into `re.sub` excluding third parameter which would be the string you apply the substitution on. You can find implementation [here](https://github.com/mpourmpoulis/CasterSublimeSnippetInterfaceExample/blob/master/custom_cpp_experimental.py#L70) for more details!
+
+
+But on top of that you can also pass in a list of transformations and they will be applied one after another!
+
 
 ![example3](./example3.gif)
+
+#### Potential Improvements
+
+One of the examples above shows two successive commands that apply transformation, with the second being fed the result of the first one! it might make sense to keep a stack so that if we do not like some sequence of transformation we could revert as many steps as we want, or even have a command like
+
+```python
+"instead apply <transformation>":
+	R(Key("c-z") + Function(transform_last_snippet_instead)),
+```
+
+To revert to the last transformation and apply another one instead in a single go
+
+### Passing Parameters To Snippets
+
+#### Fake Auto Complete
+
+#### Collecting Those Parameters
+
+#### Improvements
 
 
 ## Snippets Generated From C++ STL
