@@ -20,6 +20,10 @@ Repository for experimenting with sublime snippets and Caster voice commands
 		- [Collecting Those Parameters](#collecting-those-parameters)
 		- [Improvements - Intuitively Named Variables](#improvements---intuitively-named-variables)
 - [Snippets Generated From C++ STL](#snippets-generated-from-c-stl)
+- [Experimental Caster Integration](#experimental-caster-integration)
+	- [Snippet lambda can receive more arguments](#snippet-lambda-can-receive-more-arguments)
+	- [Better variance system](#better-variance-system)
+	- [A bit more flexible transformations](#a-bit-more-flexible-transformations)
 
 <!-- /MarkdownTOC -->
 
@@ -254,3 +258,35 @@ Now there are a lot of limitations
 So as you can see there is a lot of things that are kinda broken but I would say for the most part they do the job at least the way I needed them to:) I will eventually make a separate repository for them and get them done properly, but for now integrating snippets with Caster is a higher priority! 
 
 Also make sure that the paths to the json files are correct!!!!!
+
+
+
+
+## Experimental Caster Integration
+
+I currently have  a [branch](https://github.com/mpourmpoulis/Caster/tree/sublime_snippets) of Caster where I have begun working towards integration with Caster and you can use the [custom_cpp_more_experimental.py](./custom_cpp_more_experimental.py) oh is an example of how it can be used
+
+Though there are quiet a lot of things discuss probably the two most important to note
+
+-  much of the above functionality( excluding for instance snippet parameters) is available via the `Snippet,SnippetVariant,SnippetTransform,DisplaySnippetVariants` Which you can import from `castervoice.lib.sublime_snippets`
+
+- a global control grammar,with which currently does not have much( mainly the commonly used `variant <n>`, so you do have not to define it everywhere) in which we enable by `sublime snippet control`
+
+But there are some improvements as well
+
+### Snippet lambda can receive more arguments
+
+![](./example8.gif)
+
+### Better variance system
+
+![](./example9.gif)
+
+I want to eventually fully integrate these in the control grammar
+
+### A bit more flexible transformations
+
+![](./example10.gif)
+
+
+
